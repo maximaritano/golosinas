@@ -1,41 +1,59 @@
 object mariano{
 	const golosinas = #{}
 	
+	method golosinas() = golosinas
+	
 	method comprar(_golosina){
 	golosinas.add(_golosina)
 	}
 	
-	method golosinas() = golosinas
-
-	method probarTodasLasGolosinas(){
-	golosinas.forEach({golosina => golosina.probarGolosina()})
+	method desechar(_golosina){
+	golosinas.remove(_golosina)
 	}
-	method hayGolosinasSinTACC() = golosinas.any({golosina =>
-	golosina.libreGluten()})
 	
-	method preciosCuidados() = golosinas.all({golosina =>
-	golosina.precio() < 10})
+	method probarTodasLasGolosinas(){
+	golosinas.forEach({golosina => golosina.mordisco()})
+	}
+			
+	method hayGolosinasSinTACC(){
+	return golosinas.any({golosina =>	self.libreGluten(golosina)})
+	}
 	
-	method golosinaDeSabor(unSabor) = golosinas.find({golosina =>
-	golosina.gusto() == unSabor})
+	method libreGluten(_golosina){
+	return !(_golosina.tieneGluten())
+	}
+	
+	method preciosCuidados(){
+	return golosinas.all({golosina =>	golosina.precio() < 10})
+	}
+	
+	method golosinaDeSabor(unSabor){
+	return golosinas.find({golosina =>	golosina.sabor() == unSabor})
+	}
 
-	method golosinasDeSabor(unSabor) = golosinas.filter({golosina =>
-	golosina.gusto() == unSabor})
+	method golosinasDeSabor(unSabor){
+	golosinas.filter({golosina =>	golosina.sabor() == unSabor})
+	}
 	
-	method sabores() = golosinas.map({golosina =>
-	golosina.gusto()}).asSet()
+	method sabores(){
+	return golosinas.map({golosina =>	golosina.sabor()}).asSet()
+	}
 
-	method golosinaMasCara() = golosinas.max(({golosina =>
-	golosina.precio()}))
+	method golosinaMasCara(){
+	return golosinas.max(({golosina =>	golosina.precio()}))
+	}
 
-	method golosinasFaltantes(golosinasDeseadas) =
-	golosinasDeseadas.difference(golosinas)
+	method golosinasFaltantes(golosinasDeseadas){
+	return golosinasDeseadas.difference(golosinas)
+	}
 	
-	method hayGolosinaDe(sabor) = golosinas.any({golosina =>
-	golosina.gusto() == sabor})
+	method hayGolosinaDe(sabor){
+	golosinas.any({golosina =>	golosina.sabor() == sabor})
+	}
 	
-	method gustosFaltantes(gustosDeseados) = gustosDeseados.filter
-	({gusto => self.hayGolosinaDe(gusto)})
+	method gustosFaltantes(gustosDeseados){
+	return gustosDeseados.filter({gusto => self.hayGolosinaDe(gusto)})
+	}
 }
 
 object bombon{
@@ -46,7 +64,7 @@ object bombon{
 	
 	method mordisco(){
 		peso -= (peso * 0.2 + 1)
-	}
+	}	
 }
 
 object alfajor{
