@@ -149,7 +149,7 @@ object heladera{
 }
 
 class ChocolatinPremium inherits ChocolatinVIP{
-	override method humedad() = heladera.coeficienteHumedad() / 2
+	override method humedad() = super() / 2
 }
 
 class GolosinaBanada{
