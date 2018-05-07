@@ -112,20 +112,44 @@ class Oblea{
 	}
 }
 
-class Chocolatin{
-	var property precio
-	var property sabor = "chocolate"
-	var property peso
-	var property tieneGluten = false
+class ObleaCrujiente inherits Oblea{
+	var mordiscos = 0
 	
-	method asignarPeso(_peso){
-		peso = _peso
-		precio = 0.5 * peso
+	override method mordisco(){
+		super()
+		if (mordiscos < 3) peso -= 3
+		mordiscos ++
 	}
+}
+
+class Chocolatin{
+	var property sabor = "chocolate"
+	var property tieneGluten = false
+	var peso
+	
+	method peso() = peso
+	
+	method precio() = 0.5 * peso
 	
 	method mordisco(){
 		peso -= 2
 	}
+}
+
+class ChocolatinVIP inherits Chocolatin{
+	method humedad() = heladera.coeficienteHumedad()
+	
+	override method peso(){
+		return super() * (1 + self.humedad())
+	}
+}
+
+object heladera{
+	var property coeficienteHumedad = 0.1
+}
+
+class ChocolatinPremium inherits ChocolatinVIP{
+	override method humedad() = heladera.coeficienteHumedad() / 2
 }
 
 class GolosinaBanada{
@@ -174,4 +198,11 @@ class BombonDuro inherits Bombon{
 	override method mordisco(){
 		peso = (peso * 0.9)
 	}	
+}
+
+class CarameloRelleno inherits Caramelo{
+	override method mordisco(){
+		super()
+		sabor = "chocolate"
+	}
 }
