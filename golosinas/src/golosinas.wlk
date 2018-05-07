@@ -56,7 +56,7 @@ object mariano{
 	}
 }
 
-object bombon{
+class Bombon{
 	var property precio = 5
 	var property sabor = "frutilla"
 	var property peso = 15
@@ -67,7 +67,7 @@ object bombon{
 	}	
 }
 
-object alfajor{
+class Alfajor{
 	var property precio = 12
 	var property sabor = "chocolate"
 	var property peso = 300
@@ -78,7 +78,7 @@ object alfajor{
 	}
 }
 
-object caramelo{
+class Caramelo{
 	var property precio = 1
 	var property sabor = "frutilla"
 	var property peso = 15
@@ -89,7 +89,7 @@ object caramelo{
 	}
 }
 
-object chupetin{
+class Chupetin{
 	var property precio = 2
 	var property sabor = "naranja"
 	var property peso = 7
@@ -100,7 +100,7 @@ object chupetin{
 	}
 }
 
-object oblea{
+class Oblea{
 	var property precio = 5
 	var property sabor = "vainilla"
 	var property peso = 250
@@ -112,7 +112,7 @@ object oblea{
 	}
 }
 
-object chocolatin{
+class Chocolatin{
 	var property precio
 	var property sabor = "chocolate"
 	var property peso
@@ -128,7 +128,7 @@ object chocolatin{
 	}
 }
 
-object golosinaBanada{
+class GolosinaBanada{
 	var property golosinaBase
 	var property precio
 	var property sabor
@@ -151,7 +151,7 @@ object golosinaBanada{
 	}
 }
 
-object pastillaTutti_Frutti{
+class PastillaTutti_Frutti{
 	var property precio
 	var property sabor = "frutilla"
 	var property peso = 5
@@ -170,3 +170,8 @@ object pastillaTutti_Frutti{
 	}
 }
 
+class BombonDuro inherits Bombon{
+	override method mordisco(){
+		peso = (peso * 0.9)
+	}	
+}
